@@ -25,7 +25,6 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
-        "dataset"
     ],
     python_requires='>=3.7',
 )
