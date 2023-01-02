@@ -57,9 +57,9 @@ class Qomolangma(datalabs.GeneratorBasedBuilder):
             name="wikidata_entity",
             description=textwrap.dedent(
                 """\
-            Summary signals from Wikidata"""
+            Entity signals from Wikidata"""
             ),
-            data_url="https://dataset.acemap.info/qomolangma-datahub/qomolangma-data-mini/wikidata_entity_mini.jsonl",
+            data_url="https://dataset.acemap.info/qomolangma-datahub/qomolangma-data-mini/wikidata_entity.jsonl",
             data_dir=None,
             citation=textwrap.dedent(
                 """\
@@ -79,9 +79,9 @@ class Qomolangma(datalabs.GeneratorBasedBuilder):
             name="wikidata_relation",
             description=textwrap.dedent(
                 """\
-            Summary signals from Wikidata"""
+            Relation signals from Wikidata"""
             ),
-            data_url="https://dataset.acemap.info/qomolangma-datahub/qomolangma-data-mini/wikidata_relation_mini.jsonl",
+            data_url="https://dataset.acemap.info/qomolangma-datahub/qomolangma-data-mini/wikidata_relation.jsonl",
             data_dir=None,
             citation=textwrap.dedent(
                 """\
@@ -95,6 +95,27 @@ class Qomolangma(datalabs.GeneratorBasedBuilder):
                     "object": Value("string"),
                     "relation": Value("string"),
                     "text": Value("string"),
+                }
+            )
+        ),
+        QomolangmaConfig(
+            name="wikidata_relation",
+            description=textwrap.dedent(
+                """\
+            Summary signals from DDEScholar"""
+            ),
+            data_url="https://dataset.acemap.info/qomolangma-datahub/qomolangma-data-mini/ddescholar_title_abstract.jsonl",
+            data_dir=None,
+            citation=textwrap.dedent(
+                """\
+                TBC
+            }"""
+            ),
+            url="TBC",
+            features=datalabs.Features(
+                {
+                    "title": Value("string"),
+                    "abstract": Value("string"),
                 }
             )
         ),
@@ -143,4 +164,14 @@ class Qomolangma(datalabs.GeneratorBasedBuilder):
                         "object": object,
                         "relation": relation,
                         "text": text
+                    }
+
+        elif self.config.name == "ddescholar_title_abstract":
+            with open(filepath, encoding="utf-8") as f:
+                for id_, row in enumerate(f):
+                    data = json.loads(row.strip())
+                    title, abstract = data["title"], data["abstract"]
+                    yield id_, {
+                        "title": title,
+                        "abstract": abstract,
                     }

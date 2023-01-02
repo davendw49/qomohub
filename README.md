@@ -20,6 +20,6 @@ python -m nltk.downloader omw-1.4 # to support more feature calculation
 ```python
 from qomohub import load_signal
 
-signal = load_signal("geo_paper")
+signal = load_signal("ddescholar_paper")
 print(signal['train'][0])
 ```
