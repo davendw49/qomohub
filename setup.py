@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
 
 setup(
     name='qomohub',
-    version='0.0.1',
+    version='0.0.3',
     packages=setuptools.find_packages(),
     url='https://github.com/davendw49/qomolangma-datahub/',
     license='Apache',
