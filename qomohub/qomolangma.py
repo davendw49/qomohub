@@ -99,7 +99,7 @@ class Qomolangma(datalabs.GeneratorBasedBuilder):
             )
         ),
         QomolangmaConfig(
-            name="wikidata_relation",
+            name="ddescholar_title_abstract",
             description=textwrap.dedent(
                 """\
             Summary signals from DDEScholar"""
